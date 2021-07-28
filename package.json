@@ -1,0 +1,36 @@
+{
+  "name": "sohran-bot",
+  "version": "0.0.1",
+  "description": "Un bot Discord pour le YouTuber Sohran",
+  "main": "sohran.js",
+  "scripts": {
+    "test": "node sohran.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yan-Jobs/SohranBOT.git"
+  },
+  "keywords": [
+    "bot",
+    "discord",
+    "sohran",
+    "powerful",
+    "youtuber"
+  ],
+  "author": "Yan-Jobs",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Yan-Jobs/SohranBOT/issues"
+  },
+  "homepage": "https://github.com/Yan-Jobs/SohranBOT#readme",
+  "dependencies": {
+    "discord-giveaways": "^4.5.1",
+    "discord.js": "^13.0.0-dev.30a58dc.1627430624",
+    "easy-json-database": "^1.5.0"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2"
+  }
+}
