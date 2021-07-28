@@ -1,6 +1,6 @@
 const { Client, Intents } = require("discord.js");
 const { GiveawaysManager } = require("discord-giveaways");
-const { Database } = require("easy-json-database");
+const Database = require("easy-json-database");
 
 class Sohran extends Client {
   constructor() {
@@ -18,7 +18,7 @@ class Sohran extends Client {
     this.config = require("../config");
     this.commands = new Map();
     this.events = new Map();
-    this.db = new Database("./database", {
+    this.db = new Database("./database.json", {
       snapshots: {
         enabled: true,
         interval: 24 * 60 * 60 * 1000,
