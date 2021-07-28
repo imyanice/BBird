@@ -3,4 +3,5 @@ yarn.lock
 node_modules/
 config.js
 .vscode/
-database
+database.json
+giveaways.json
