@@ -1,17 +1,16 @@
-const Yan = require("./base/So"),
+const Sohran = require("./base/Sohran"),
   {
     registerEvents,
     registerCommands,
     registerPostCommands,
-  } = require("./utils/handler"),
-  moment = require("moment");
+  } = require("./utils/handler");
 
-const client = new Yan();
+const client = new Sohran();
 
 const init = async () => {
-  await registerCommands(client, "../commands");
+/*   await registerCommands(client, "../commands");
   await registerEvents(client, "../events");
-  await registerPostCommands(client, "../slashCommands");
+  await registerPostCommands(client, "../slashCommands"); */
   await client.login(client.config.token);
 };
 
