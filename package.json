@@ -24,9 +24,12 @@
   },
   "homepage": "https://github.com/Yan-Jobs/SohranBOT#readme",
   "dependencies": {
+    "chalk": "^4.1.1",
     "discord-giveaways": "^4.5.1",
     "discord.js": "^13.0.0-dev.30a58dc.1627430624",
-    "easy-json-database": "^1.5.0"
+    "easy-json-database": "^1.5.0",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.3.0",
