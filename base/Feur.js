@@ -14,7 +14,7 @@ class Sohran extends Client {
       ]
     });
 
-    /* this.config = require("../config"); */
+    this.config = require("../config");
     this.commands = new Map();
     this.events = new Map();
     this.slashCmds = new Map();
