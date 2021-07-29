@@ -22,7 +22,7 @@ async function registerCommands(
       if (Command.prototype instanceof BaseCommand) {
         // If the file is an instance of our base command file
         const cmd = new Command(); // Create a new command
-        await client.commands.set(cmd.name, cmd); // Set the command in our map
+        await client.commands.set(cmd.data.name, cmd); // Set the command in our map
         client.logger.log(
           "🎉  Successfully registered " + cmd.data.name + " command !",
           "cmd"
