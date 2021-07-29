@@ -18,7 +18,10 @@ module.exports = class ReadyEvent extends BaseEvent {
         .get("832244628329594910")
         ?.commands.create(data)
         .then(() => {
-          console.log(`The command ${data.name} was successfully posted !`);
+          client.logger.log(
+            `The command ${data.name} was successfully posted !`,
+            "/"
+          );
         })
         .catch((e) => console.log(e));
     }
