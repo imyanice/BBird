@@ -3,7 +3,9 @@ const datas = require("../../commands/api/guildDatas");
 
 module.exports = class ReadyEvent extends BaseEvent {
   constructor() {
-    super("ready");
+    super({
+      name: "ready",
+    });
   }
 
   async run(client) {
