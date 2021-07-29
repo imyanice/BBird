@@ -22,7 +22,7 @@ class Sohran extends Client {
       snapshots: {
         enabled: true,
         interval: 24 * 60 * 60 * 1000,
-        folder: "./backups/",
+        folder: "./backups/"
       }
     });
     this.logger = require("../utils/logger");

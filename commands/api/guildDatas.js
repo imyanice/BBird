@@ -1,6 +1,6 @@
 module.exports = [
-    {
-        name: 'hello',
-        description: 'Reply with hello.'
-    }
-]
+  {
+    name: "hello",
+    description: "Reply with hello."
+  }
+];

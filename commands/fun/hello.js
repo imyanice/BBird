@@ -3,7 +3,7 @@ const BaseCommand = require("../../base/BaseCommand");
 module.exports = class Hello extends BaseCommand {
   constructor() {
     super({
-        name: "hello"
+      name: "hello"
     });
   }
   async run(client, interaction) {

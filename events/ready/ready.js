@@ -4,7 +4,7 @@ const datas = require("../../commands/api/guildDatas");
 module.exports = class ReadyEvent extends BaseEvent {
   constructor() {
     super({
-      name: "ready",
+      name: "ready"
     });
   }
 

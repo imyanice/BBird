@@ -23,7 +23,10 @@ async function registerCommands(
         // If the file is an instance of our base command file
         const cmd = new Command(); // Create a new command
         await client.commands.set(cmd.name, cmd); // Set the command in our map
-        client.logger.log("🎉  Successfully registered " + cmd.data.name + " command !", "cmd");
+        client.logger.log(
+          "🎉  Successfully registered " + cmd.data.name + " command !",
+          "cmd"
+        );
       }
     }
   }
@@ -48,7 +51,10 @@ async function registerEvents(
       if (Event.prototype instanceof BaseEvent) {
         // If the file is an instance of our base event file
         const event = new Event(); // Create a new event
-        client.logger.log("🎉  Successfully registered " + event.data.name + " event !", "event");
+        client.logger.log(
+          "🎉  Successfully registered " + event.data.name + " event !",
+          "event"
+        );
         client.on(event.data.name, event.run.bind(event, client)); // When the event start execute it
       }
     }
