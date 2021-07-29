@@ -11,11 +11,14 @@ module.exports = class ReadyEvent extends BaseEvent {
       `Logged as ${client.user.tag} in ${client.guilds.cache.size} !`,
       "ready"
     ); // Console log ready
-    datas.forEach(data => {
+    datas.forEach(async data => {
       await client.guild.cache
-      .get("")
+      .get("832244628329594910")
       ?.commands.create(data)
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .then(() => {
+        client.logger.log(`Succesfully posted slash command: ${data.name} !`, "/")
+      })
     });
   }
 };

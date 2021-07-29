@@ -48,7 +48,7 @@ async function registerEvents(
       if (Event.prototype instanceof BaseEvent) {
         // If the file is an instance of our base event file
         const event = new Event(); // Create a new event
-        console.logger.log("🎉  Successfully registered " + event.name + " event !", "event");
+        client.logger.log("🎉  Successfully registered " + event.name + " event !", "event");
         client.on(event.name, event.run.bind(event, client)); // When the event start execute it
       }
     }
