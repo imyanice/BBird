@@ -25,7 +25,6 @@ class Sohran extends Client {
         folder: "./backups/",
       }
     });
-    this.slashCmds = new Map();
     this.logger = require("../utils/logger");
     this.giveawaysManager = new GiveawaysManager(this, {
       storage: "./giveaways.json",

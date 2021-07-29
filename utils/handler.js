@@ -1,64 +1,58 @@
-const path = require("path");
-const fs = require("fs").promises;
-const BaseCommand = require("../base/BaseCommand");
-const BaseEvent = require("../base/BaseEvent");
-const BasePostCommand = require("../base/BasePostCommand");
+const path = require("path"); // Require the path library
+const fs = require("fs").promises; // Require the fs promise library
+const BaseEvent = require("../base/BaseEvent"); // Require the base event file
+const BaseCommand = require("../base/BaseCommand"); // Require the base command file
 
-async function registerCommands(client, dir = "") {
-  const filePath = path.join(__dirname, dir);
-  const files = await fs.readdir(filePath);
+async function registerCommands(
+  client,
+  dir = "" /* If there is no directory specified it is equal to:' '*/
+) {
+  // Create the function
+  const filePath = path.join(__dirname, dir); // Get the file path
+  const files = await fs.readdir(filePath); // Read all the files in the path directory
   for (const file of files) {
-    const stat = await fs.lstat(path.join(filePath, file));
-    if (stat.isDirectory())
-      await registerCommands(client, path.join(dir, file));
-    if (file.endsWith(".js")) {
-      const Command = require(path.join(filePath, file));
+    // For a file in the files
+    const stat = await fs.lstat(path.join(filePath, file)); // Get the data from the file
+    if (stat.isDirectory()) {
+      // If the file is a dir
+      await registerCommands(client, path.join(dir, file)); // Re execute the function with the file who is a dir (that's so hard to explain sry)
+    } else if (file.endsWith(".js")) {
+      // If the file is a js file
+      const Command = require(path.join(filePath, file)); // Load the file data
       if (Command.prototype instanceof BaseCommand) {
-        const cmd = new Command();
-        await client.commands.set(cmd.name, cmd);
-        client.logger.log(
-          "🎉  Succesfully registered " + cmd.name + " command !",
-          "cmd"
-        );
+        // If the file is an instance of our base command file
+        const cmd = new Command(); // Create a new command
+        await client.commands.set(cmd.name, cmd); // Set the command in our map
+        client.logger.log("🎉  Successfully registered " + cmd.name + " command !", "cmd");
       }
     }
   }
 }
 
-async function registerEvents(client, dir = "") {
-  const filePath = path.join(__dirname, dir);
-  const files = await fs.readdir(filePath);
+async function registerEvents(
+  client,
+  dir = "" /* If there is no directory specified it is equal to:' '*/
+) {
+  // Create the function
+  const filePath = path.join(__dirname, dir); // Get the file path
+  const files = await fs.readdir(filePath); // Read all the files in the path directory
   for (const file of files) {
-    const stat = await fs.lstat(path.join(filePath, file));
-    if (stat.isDirectory()) await registerEvents(client, path.join(dir, file));
-    if (file.endsWith(".js")) {
-      const Event = require(path.join(filePath, file));
+    // For a file in the files
+    const stat = await fs.lstat(path.join(filePath, file)); // Get the data from the file
+    if (stat.isDirectory()) {
+      // If the file is a dir
+      await registerEvents(client, path.join(dir, file)); // Re execute the function with the file who is a dir (that's so hard to explain sry)
+    } else if (file.endsWith(".js")) {
+      // If the file is a js file
+      const Event = require(path.join(filePath, file)); // Load the file data
       if (Event.prototype instanceof BaseEvent) {
-        const event = new Event();
-        client.logger.log(
-          "🎉  Succesfully registered " + event.name + " event !",
-          "event"
-        );
-        client.on(event.name, event.run.bind(event, client));
-      }
-    }
-  }
-}
-async function registerPostCommands(client, dir = "") {
-  const filePath = path.join(__dirname, dir);
-  const files = await fs.readdir(filePath);
-  for (const file of files) {
-    const stat = await fs.lstat(path.join(filePath, file));
-    if (stat.isDirectory())
-      await registerPostCommands(client, path.join(dir, file));
-    if (file.endsWith(".js")) {
-      const Command = require(path.join(filePath, file));
-      if (Command.prototype instanceof BasePostCommand) {
-        const cmd = new Command();
-        client.slashCmds.set(cmd.name, cmd);
+        // If the file is an instance of our base event file
+        const event = new Event(); // Create a new event
+        console.logger.log("🎉  Successfully registered " + event.name + " event !", "event");
+        client.on(event.name, event.run.bind(event, client)); // When the event start execute it
       }
     }
   }
 }
 
-module.exports = { registerCommands, registerEvents, registerPostCommands };
+module.exports = { registerEvents, registerCommands }; // Export the 2 functions
