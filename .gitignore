@@ -5,3 +5,5 @@ config.js
 .vscode/
 database.json
 giveaways.json
+.replit
+.node.sh
