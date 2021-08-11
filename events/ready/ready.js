@@ -15,7 +15,7 @@ module.exports = class ReadyEvent extends BaseEvent {
     ); // Console log ready
     for (const data of datas) {
       await client.guilds.cache
-        .get("832244628329594910")
+        .get("873188259092660295")
         ?.commands.create(data)
         .then(() => {
           client.logger.log(
