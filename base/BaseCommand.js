@@ -1,5 +1,10 @@
 module.exports = class BaseCommand {
-  constructor(data) {
-    this.data = data;
+  constructor({
+    name = null,
+    enabled = true,
+    memberPermissions = new Array(),
+    botPermissions = new Array()
+  }) {
+    this.data = { name, enabled, memberPermissions, botPermissions };
   }
 };

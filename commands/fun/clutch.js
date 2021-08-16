@@ -8,6 +8,8 @@ module.exports = class Clutch extends BaseCommand {
     });
   }
   async run(client, interaction) {
-    await interaction.reply({content: ":tada: OMG ! Ce clutch était vraiment inattendue"});
+    await interaction.reply({
+      content: ":tada: OMG ! Ce clutch était vraiment inattendue"
+    });
   }
 };
