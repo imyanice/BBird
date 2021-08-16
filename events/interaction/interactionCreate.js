@@ -8,21 +8,22 @@ class InteractionCreateEvent extends BaseEvent {
   }
   async run(client, interaction) {
     if (interaction.isCommand()) {
-      const command = interaction.commandName; // Take the command name
-      const commandRegistered = client.commands.get(command); // Get the command from our command map
-      if (commandRegistered) {
+      const commandName = interaction.commandName; // Take the command name
+      const command = client.commands.get(commandName); // Get the command from our command map
+      const data = client.commands.get(commandName).data;
+      if (command) {
         // If the command was found
-        if (commandRegistered.enabled) {
-          commandRegistered.run(client, interaction); // Run it
+        if (data.enabled) {
+          command.run(client, interaction); // Run it
         } else if (
-          !commandRegistered.enabled &&
+          !data.enabled &&
           interaction.user.id !== "735538297815957584" /* My id :) */
         ) {
           interaction.reply(
             ":x: Cette commande est désactivée ! Réessaye plus tard."
           );
         } else {
-          commandRegistered.run(client, interaction); // Run it if it is me
+          command.run(client, interaction); // Run it if it is me
         }
       }
     }
