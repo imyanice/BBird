@@ -19,5 +19,9 @@ module.exports = [
   {
     name: "nowplaying",
     description: "Affiche ce qui est entrain d'être joué."
+  },
+  {
+    name: "skip",
+    description: "Saute la musique qui est entrain d'être joué."
   }
 ];
