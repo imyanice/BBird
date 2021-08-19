@@ -15,5 +15,9 @@ module.exports = [
         required: true
       }
     ]
+  },
+  {
+    name: "nowplaying",
+    description: "Affiche ce qui est entrain d'être joué."
   }
 ];
