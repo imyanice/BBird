@@ -1,5 +1,6 @@
 const { Client, Intents } = require("discord.js");
 const { GiveawaysManager } = require("discord-giveaways");
+const { Player } = require("discord-player");
 const Database = require("easy-json-database");
 
 class Sohran extends Client {
@@ -36,6 +37,7 @@ class Sohran extends Client {
         reaction: "🎉"
       }
     });
+    this.player = new Player(this);
   }
 }
 
