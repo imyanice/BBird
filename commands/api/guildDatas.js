@@ -23,5 +23,9 @@ module.exports = [
   {
     name: "skip",
     description: "Saute la musique qui est entrain d'être joué."
+  },
+  {
+    name: "clear",
+    description: "Clear la file d'attente."
   }
 ];
