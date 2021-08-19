@@ -13,7 +13,6 @@ module.exports = class NP extends BaseCommand {
       return interaction.reply(`:x: | Aucune musique en cours de lecture !`);
     const queue = client.player.getQueue(interaction.guild.id);
     const track = queue.nowPlaying(interaction.guild.id);
-    console.log(track.requestedBy);
     const embed = new MessageEmbed()
       .setColor("#feab0b")
       .setAuthor("🎤 | Entrain de jouer : " + track.title)
