@@ -27,5 +27,9 @@ module.exports = [
   {
     name: "clearqueue",
     description: "Clear la file d'attente."
+  },
+  {
+    name: "pause",
+    description: "Met en pause la musique en cours de lecture."
   }
 ];
