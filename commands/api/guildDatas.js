@@ -31,5 +31,9 @@ module.exports = [
   {
     name: "pause",
     description: "Met en pause la musique en cours de lecture."
+  },
+  {
+    name: "resume",
+    description: "Reprends la musique qui a été mise en pause."
   }
 ];
