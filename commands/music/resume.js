@@ -1,10 +1,10 @@
 const BaseCommand = require("../../base/BaseCommand");
 const { MessageEmbed } = require("discord.js");
 
-module.exports = class Pause extends BaseCommand {
+module.exports = class Resume extends BaseCommand {
   constructor() {
     super({
-      name: "pause",
+      name: "resume",
       enabled: true
     });
   }
