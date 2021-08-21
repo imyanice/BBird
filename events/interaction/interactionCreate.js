@@ -26,6 +26,25 @@ class InteractionCreateEvent extends BaseEvent {
           command.run(client, interaction); // Run it if it is me
         }
       }
+    } else if (!interaction.isButton()) {
+      const buttonName = interaction.customId; // Take the command name
+      const button = client.commands.get(buttonName); // Get the command from our command map
+      const data = client.commands.get(buttonName).data;
+      if (button) {
+        // If the command was found
+        if (data.enabled) {
+          button.run(client, interaction); // Run it
+        } else if (
+          !data.enabled &&
+          interaction.user.id !== "735538297815957584" /* My id :) */
+        ) {
+          interaction.reply(
+            ":x: Ce boutton est désactivée ! Réessaye plus tard."
+          );
+        } else {
+          button.run(client, interaction); // Run it if it is me
+        }
+      }
     }
   }
 }
