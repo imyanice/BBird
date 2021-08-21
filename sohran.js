@@ -2,6 +2,7 @@ const Sohran = require("./base/Sohran"),
   {
     registerEvents,
     registerCommands,
+    registerButtons,
     registerPostCommands
   } = require("./utils/handler");
 
