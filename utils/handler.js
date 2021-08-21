@@ -2,6 +2,7 @@ const path = require("path"); // Require the path library
 const fs = require("fs").promises; // Require the fs promise library
 const BaseEvent = require("../base/BaseEvent"); // Require the base event file
 const BaseCommand = require("../base/BaseCommand"); // Require the base command file
+const BaseButton = require("../base/BaseButton"); // Require the base button file
 
 async function registerCommands(
   client,
@@ -61,4 +62,34 @@ async function registerEvents(
   }
 }
 
-module.exports = { registerEvents, registerCommands }; // Export the 2 functions
+
+async function registerButtons(
+  client,
+  dir = "" /* If there is no directory specified it is equal to: ''*/
+) {
+  // Create the function
+  const filePath = path.join(__dirname, dir); // Get the file path
+  const files = await fs.readdir(filePath); // Read all the files in the path directory
+  for (const file of files) {
+    // For a file in the files
+    const stat = await fs.lstat(path.join(filePath, file)); // Get the data from the file
+    if (stat.isDirectory()) {
+      // If the file is a dir
+      await registerCommands(client, path.join(dir, file)); // Re execute the function with the file who is a dir (that's so hard to explain sry)
+    } else if (file.endsWith(".js")) {
+      // If the file is a js file
+      const Button = require(path.join(filePath, file)); // Load the file data
+      if (Button.prototype instanceof BaseButton) {
+        // If the file is an instance of our base button file
+        const btn = new Button(); // Create a new button
+        await client.buttons.set(btn.data.customId, btn); // Set the button in our map
+        client.logger.log(
+          "🎉  Successfully registered " + btn.data.customId + " command !",
+          "btn"
+        );
+      }
+    }
+  }
+}
+
+module.exports = { registerEvents, registerCommands, registerButtons }; // Export the 3 functions
