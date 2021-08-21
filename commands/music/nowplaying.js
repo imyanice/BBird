@@ -35,7 +35,7 @@ module.exports = class NP extends BaseCommand {
       .addField(":loud_sound: | Volume:", queue.volume.toString(), true)
       .addField(
         "En pause ?",
-        queue.connection.paused() ? "Oui :thumbsup:" : "Non :thumbsdown:",
+        queue.connection.paused ? "Oui :thumbsup:" : "Non :thumbsdown:",
         true
       )
       .addField(
