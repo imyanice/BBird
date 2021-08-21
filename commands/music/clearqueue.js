@@ -1,10 +1,10 @@
 const BaseCommand = require("../../base/BaseCommand");
 const { MessageEmbed } = require("discord.js");
 
-module.exports = class Clear extends BaseCommand {
+module.exports = class ClearQueue extends BaseCommand {
   constructor() {
     super({
-      name: "clear",
+      name: "clearqueue",
       enabled: true
     });
   }
