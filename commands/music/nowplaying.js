@@ -27,13 +27,13 @@ module.exports = class NP extends BaseCommand {
       )
       .addField(
         ":notes: | Depuis une playlist ?",
-        track.fromPlaylist ? "Oui" : "Non",
+        track.fromPlaylist ? "Oui :thumbsup:" : "Non :thumbsdown:",
         true
       )
       .addField(":clock1: | Durée:", track.duration, true)
       .addField(":eyes: | Vue(s):", track.views.toString(), true)
       .addField(":loud_sound: | Volume:", queue.volume.toString(), true)
-      //.addField("En pause ?", queue.paused() ? "Oui :thumbsup:" : "Non :thumbsdown:" , true)
+      .addField("En pause ?", queue.connection.paused() ? "Oui :thumbsup:" : "Non :thumbsdown:" , true)
       .addField(
         "Progression:",
         queue.createProgressBar({ timecodes: true }),
