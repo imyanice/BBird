@@ -35,5 +35,9 @@ module.exports = [
   {
     name: "resume",
     description: "Reprends la musique qui a été mise en pause."
+  },
+  {
+    name: "shuffle",
+    description: "Joue la queue en random."
   }
 ];
