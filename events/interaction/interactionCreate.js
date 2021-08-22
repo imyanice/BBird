@@ -15,6 +15,10 @@ class InteractionCreateEvent extends BaseEvent {
         // If the command was found
         if (data.enabled) {
           command.run(client, interaction); // Run it
+          client.logger.log(
+            `The command: ${data.name} was runned by ${interaction.user.username}#${interaction.user.tag} in ${interaction.guild.id} !`,
+            "cmd"
+          );
         } else if (
           !data.enabled &&
           interaction.user.id !== "735538297815957584" /* My id :) */
