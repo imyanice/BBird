@@ -39,5 +39,9 @@ module.exports = [
   {
     name: "shuffle",
     description: "Joue la queue en random."
+  },
+  {
+    name: "queue",
+    description: "Affiche la file d'attente"
   }
 ];

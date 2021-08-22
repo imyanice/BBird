@@ -4,7 +4,7 @@ class Play extends BaseCommand {
   constructor() {
     super({
       name: "play",
-      enebled: false
+      enebled: true
     });
   }
   async run(client, interaction) {
