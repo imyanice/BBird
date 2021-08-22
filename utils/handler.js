@@ -62,7 +62,6 @@ async function registerEvents(
   }
 }
 
-
 async function registerButtons(
   client,
   dir = "" /* If there is no directory specified it is equal to: ''*/
