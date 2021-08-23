@@ -19,6 +19,7 @@ class Sohran extends Client {
     this.config = require("../config");
     this.commands = new Map();
     this.events = new Map();
+    this.buttons = new Map();
     this.db = new Database("./database.json", {
       snapshots: {
         enabled: true,

@@ -30,14 +30,18 @@ class InteractionCreateEvent extends BaseEvent {
           command.run(client, interaction); // Run it if it is me
         }
       }
-    } else if (!interaction.isButton()) {
+    } else if (interaction.isButton()) {
       const buttonName = interaction.customId; // Take the command name
-      const button = client.commands.get(buttonName); // Get the command from our command map
-      const data = client.commands.get(buttonName).data;
+      const button = client.buttons.get(buttonName); // Get the command from our command map
       if (button) {
+        const data = client.buttons.get(buttonName).data;
         // If the command was found
         if (data.enabled) {
           button.run(client, interaction); // Run it
+          client.logger.log(
+            `The command: ${data.customId} was runned by ${interaction.user.username}#${interaction.user.tag} in ${interaction.guild.id} !`,
+            "cmd"
+          );
         } else if (
           !data.enabled &&
           interaction.user.id !== "735538297815957584" /* My id :) */

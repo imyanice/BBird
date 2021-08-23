@@ -10,7 +10,7 @@ const client = new Sohran();
 
 const init = async () => {
   await registerCommands(client, "../commands");
-  //await registerButtons(client, "../commands")
+  await registerButtons(client, "../buttons");
   await registerEvents(client, "../events");
   await client.login(client.config.token);
 };

@@ -74,7 +74,7 @@ async function registerButtons(
     const stat = await fs.lstat(path.join(filePath, file)); // Get the data from the file
     if (stat.isDirectory()) {
       // If the file is a dir
-      await registerCommands(client, path.join(dir, file)); // Re execute the function with the file who is a dir (that's so hard to explain sry)
+      await registerButtons(client, path.join(dir, file)); // Re execute the function with the file who is a dir (that's so hard to explain sry)
     } else if (file.endsWith(".js")) {
       // If the file is a js file
       const Button = require(path.join(filePath, file)); // Load the file data
@@ -83,7 +83,7 @@ async function registerButtons(
         const btn = new Button(); // Create a new button
         await client.buttons.set(btn.data.customId, btn); // Set the button in our map
         client.logger.log(
-          "🎉  Successfully registered " + btn.data.customId + " command !",
+          "🎉  Successfully registered " + btn.data.customId + " button !",
           "btn"
         );
       }
