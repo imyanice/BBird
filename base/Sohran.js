@@ -39,6 +39,25 @@ class Sohran extends Client {
       }
     });
     this.player = new Player(this);
+    // Player events
+    this.player.on("trackStart", (queue, track) => {
+      queue.metadata.channel.send(
+        "🎶 | Entrain de jouer: **" + track.title + "** !"
+      );
+    });
+    this.player.on("channelEmpty", (queue) => {
+      queue.metadata.channel.send(
+        "❌ | Plus personne n'est connecté, déconnection..."
+      );
+    });
+    this.player.on("botDisconnect", (queue) => {
+      queue.metadata.channel.send(
+        "❌ | J'ai éte déconnécte manuellement, je supprime la file d'attente..."
+      );
+    });
+    this.player.on("queueEnd", (queue) => {
+      queue.metadata.channel.send("✅ | Queue terminée !");
+    });
   }
 }
 

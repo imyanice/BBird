@@ -25,10 +25,5 @@ module.exports = class ReadyEvent extends BaseEvent {
         })
         .catch((e) => console.log(e));
     }
-    client.player.on("trackStart", (queue, track) => {
-      queue.metadata.channel.send(
-        "🎶 | Entrain de jouer: **" + track.title + "** !"
-      );
-    });
   }
 };
