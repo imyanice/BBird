@@ -3,7 +3,7 @@ yarn.lock
 node_modules/
 config.js
 .vscode/
-database.json
+database/
 giveaways.json
 .replit
 .node.sh

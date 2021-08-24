@@ -20,7 +20,8 @@ class Sohran extends Client {
     this.commands = new Collection();
     this.events = new Collection();
     this.buttons = new Collection();
-    this.db = new Database("./database.json", {
+    this.db = new Array();
+    this.db.automod = new Database("./database/automod.json", {
       snapshots: {
         enabled: true,
         interval: 24 * 60 * 60 * 1000,
