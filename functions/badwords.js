@@ -454,15 +454,14 @@ module.exports = async function swearingChecker(message, client) {
     "enculée",
     "salOpe"
   ];
-  let foundInTextWord = false;
 
-  for (const i in WORDS) {
-    if (message.content.toLowerCase().includes(WORDS[i].toLowerCase()))
-      foundInTextWord = true;
-  }
+  const foundInTextWord = WORDS.reduce(
+    (acc, res) => acc || message.content.toLowerCase().split(" ").includes(res),
+    false
+  );
 
   if (foundInTextWord) {
-    if (message.member.hasPermission("MANAGE_MESSAGES")) return;
+    if (message.member.permissions.has("MANAGE_MESSAGES")) return;
     if (warnCount === null) {
       data.set(userId, 1);
       data.get(userId);
@@ -473,9 +472,10 @@ module.exports = async function swearingChecker(message, client) {
     message.delete();
     message.channel.send(`${warnMSG} | Tu as **${warnCount}** warning(s)!`);
     if (warnCount === muteCount) {
-      message.member.roles.add(mutedRole);
+      message.member.roles.add(client.config.roles.muted);
+      message.member.roles.remove(client.config.roles.member);
       message.channel.send(
-        `Tu as **${warnCount}** warning(s)! | Action: Mute | Raison: tu as Raison${muteCount} warnings.`
+        `Tu as **${warnCount}** warning(s)! | Action: Mute | Raison: tu as ${muteCount} warnings.`
       );
     }
     if (warnCount === kickCount) {
