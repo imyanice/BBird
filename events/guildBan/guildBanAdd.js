@@ -16,7 +16,7 @@ module.exports = class GuildBanAdd extends BaseEvent {
         .get(client.user.id)
         .permissions.has("MANAGE_WEBHOOKS")
     )
-      return console.log("pas de perm");
+      return;
     const embed = new MessageEmbed()
       .setAuthor("Action de Modération | Ban !", ban.user.displayAvatarURL())
       .setTitle(
@@ -40,10 +40,8 @@ module.exports = class GuildBanAdd extends BaseEvent {
       const logs = await ban.guild
         .fetchAuditLogs(1, null, 22)
         .catch((e) => console.log(e));
-      console.log(logs);
       if (!logs) return;
       const log = logs.entries.find((e) => e.target.id === ban.user.id);
-      console.log(log);
       if (!log) return;
       const author = log.executor;
       if (log.reason) {
