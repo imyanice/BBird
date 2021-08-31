@@ -46,8 +46,9 @@ module.exports = class GuildBanAdd extends BaseEvent {
       console.log(log);
       if (!log) return;
       const author = log.executor;
-      if (log.reason)
-        return embed.addField("❓ | Raison:", `${log.reason}`, true);
+      if (log.reason) {
+        embed.addField("❓ | Raison:", `${log.reason}`, true);
+      }
       embed.addField(
         "🔨 | Auteur:",
         `${author.username}\`#${author.discriminator}\` (${author.toString()})`,
