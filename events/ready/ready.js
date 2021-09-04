@@ -1,5 +1,6 @@
 const BaseEvent = require("../../base/BaseEvent");
 const datas = require("../../commands/api/guildDatas");
+const checkForVideos = require("../../functions/youtube/checkForVideos")
 
 module.exports = class ReadyEvent extends BaseEvent {
   constructor() {
@@ -25,5 +26,8 @@ module.exports = class ReadyEvent extends BaseEvent {
         })
         .catch((e) => console.log(e));
     }
+    setInterval(async () => {
+      checkForVideos(client);
+    }, 60000);
   }
 };
